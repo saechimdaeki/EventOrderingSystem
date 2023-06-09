@@ -16,8 +16,8 @@ class KafkaProducerConfig {
     fun producerFactory() : ProducerFactory<String, Long> {
         val config = mutableMapOf<String, Any>()
         config[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = "localhost:9092"
-        config[ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG] = StringSerializer::class
-        config[ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG] = LongSerializer::class
+        config[ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG] = StringSerializer::class.java
+        config[ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG] = LongSerializer::class.java
 
         return DefaultKafkaProducerFactory(config)
     }

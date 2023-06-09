@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
+import kotlin.concurrent.thread
 
 @SpringBootTest
 class ApplyServiceTest @Autowired constructor(
@@ -39,6 +40,10 @@ class ApplyServiceTest @Autowired constructor(
             }
         }
         latch.await()
+
+        // Thread 10 초 sleep (쿠폰 생성까지 텀이 있기에 기다림)
+        Thread.sleep(10000)
+
 
         val count = couponRepository.count()
 
